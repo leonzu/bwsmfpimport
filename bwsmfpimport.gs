@@ -1,7 +1,7 @@
 /** @OnlyCurrentDoc */
 var spreadsheet = SpreadsheetApp.getActive();
 var sheet = spreadsheet.getSheets()[0];
-var username = 'YOUR_MYFITNESSPAS_PASSWORD';
+var username = 'YOUR_MYFITNESSPAL_PASSWORD';
 
 function mfpImport() {
     
@@ -22,16 +22,18 @@ function mfpImport() {
 
   for (var i = 0; i < values.length; i+= 2){
   for (var col in values[i]) {
-    var dateTime = new Date(values[i][col]).setHours(0,0,0,0)
-    
-    if (dateTime >= monday && dateTime <= sunday){
-      rowInterest = parseInt(i) + 26 + 1;
-      dateInterest = dateTime;
+    var dateTime1 = new Date(values[i][col]).setHours(0,0,0,0)
+    if (typeof values[i+2] !== 'undefined'){
+      var dateTime2 = new Date(values[i+2][col]).setHours(0,0,0,0)
+      if (today >= dateTime1 && today <= dateTime2){
+        rowInterest = parseInt(i) + 26 + 1;
+        dateInterest = dateTime1;
+      }
     }
   }
   }
   
-  Logger.log(dateInterest)
+  
     
   for (var j = 0; j < 7; j++){
     var dateScrap = dateInterest + j * (24*3600*1000);
@@ -55,5 +57,3 @@ function mfpImport() {
   }
   
 }
-
-
