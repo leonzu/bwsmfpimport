@@ -1,7 +1,7 @@
 /** @OnlyCurrentDoc */
 var spreadsheet = SpreadsheetApp.getActive();
 var sheet = spreadsheet.getSheets()[0];
-var username = 'YOUR_MYFITNESSPAL_PASSWORD';
+var username = 'YOUR_MYFITNESSPAL_USERNAME';
 
 function mfpImport() {
     
